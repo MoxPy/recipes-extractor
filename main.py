@@ -1,8 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
 
-# INSERT URLS HERE
-urls = ["https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/10222", "https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/10223"]
+# RECIPE NUMBERS
+starting_number = 10222
+ending_number = 10224
+
+# IF YOU WANT TO SCRAPE A SINGLE RECIPE, SET STARTING_NUMBER AND ENDING_NUMBER TO THE SAME VALUE
+urls = []
+
+for num in range(starting_number, ending_number + 1):
+    url = f"https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/{num}"
+    if url not in urls:
+        urls.append(url)
+
 
 for url in urls:
     response = requests.get(url)
