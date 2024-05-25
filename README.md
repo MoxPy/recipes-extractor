@@ -26,7 +26,7 @@ Usage
 
     Update the starting_number and ending_number variables in the script to the desired range of recipe IDs.
 
-    Run the script. The script will generate a list of URLs within the specified range and extract nutrients and ingredients for each recipe.
+    Run the script. The script will extract nutrients and ingredients for each recipe in urls.
 
 
 
