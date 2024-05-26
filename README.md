@@ -46,10 +46,10 @@ You can choose to use a range of numbers (starting_number and ending_number) or 
 
 # Generate and append new URLs based on the given range
     if in_order:
-    for num in range(starting_number, ending_number + 1):
-        url = f"https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/{num}"
-        if url not in urls:
-            urls.append(url)
+        for num in range(starting_number, ending_number + 1):
+            url = f"https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/{num}"
+            if url not in urls:
+                urls.append(url)
     else:
         for num in my_numbers:
             url = f"https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/{num}"
