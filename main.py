@@ -2,16 +2,24 @@ import requests
 from bs4 import BeautifulSoup
 
 # RECIPE NUMBERS
-starting_number = 10222
-ending_number = 10224
-
-# IF YOU WANT TO SCRAPE A SINGLE RECIPE, SET STARTING_NUMBER AND ENDING_NUMBER TO THE SAME VALUE
+starting_number = 10300
+ending_number = 10300
+my_numbers = [10303, 10400]
+# IF YOU WANT TO SCRAPE A SINGLE RECIPE, SET STARTING_NUMBER AND ENDING_NUMBER TO THE SAME VALUE,
+# IF YOU WANT TO SCRAPE MULTIPLE RECIPES NOT IN ORDER INSERT THEM IN MY_NUMBERS THEN SET IN_ORDER TO FALSE
+in_order = False
 urls = []
 
-for num in range(starting_number, ending_number + 1):
-    url = f"https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/{num}"
-    if url not in urls:
-        urls.append(url)
+if in_order:
+    for num in range(starting_number, ending_number + 1):
+        url = f"https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/{num}"
+        if url not in urls:
+            urls.append(url)
+else:
+    for num in my_numbers:
+        url = f"https://cosylab.iiitd.edu.in/recipedb/search_recipeInfo/{num}"
+        if url not in urls:
+            urls.append(url)
 
 
 for url in urls:
@@ -23,7 +31,8 @@ for url in urls:
 
     # RECIPE NAME
     recipe_name = soup.find("h3").text.strip()
-    print("\nRecipe name:", recipe_name)
+    print("\nURL:", url)
+    print("Recipe name:", recipe_name)
 
     # NUTRIENTS
     nutrient_table = soup.find("table", {"class": "highlight striped"})
